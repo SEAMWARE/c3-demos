@@ -1,0 +1,86 @@
+<!doctype html>
+<!-- Copyright 2026 Seamware - SPDX-License-Identifier: Apache-2.0 -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>c³ demos</title>
+<style>
+  :root { --bg: #0d0f14; --panel: #161a22; --line: #2a3040; --text: #e6e8ee; --dim: #9aa3b5; --accent: #d63b7a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 system-ui, sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 26px; font-weight: 650; margin: 0 0 4px; }
+  .lead { color: var(--dim); margin: 0 0 24px; }
+  a { color: var(--text); }
+  a:hover { color: var(--accent); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  .card h2 { font-size: 18px; margin: 0 0 6px; }
+  .card p { margin: 0 0 12px; color: var(--dim); }
+  .wide { grid-column: 1 / -1; }
+  video { display: block; width: 100%; height: auto; border-radius: 8px; background: #000; margin-bottom: 12px; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; background: #0b0d12;
+         border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; color: var(--text); }
+  pre { margin: 0; overflow-x: auto; background: #0b0d12; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+  pre code { border: 0; padding: 0; background: none; }
+  .how { margin-top: 28px; }
+  .how h2 { font-size: 18px; }
+  footer { margin-top: 32px; color: var(--dim); font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>c³ demos</h1>
+  <p class="lead"><a href="https://github.com/SEAMWARE/c3">c³</a>, the coraine Control Center, on
+    <a href="https://github.com/SEAMWARE/coraine">coraine</a> brokers - to watch, or to run on your machine.</p>
+
+  <div class="grid">
+    <section class="card wide">
+      <h2>AI Assist - asking a broker in your own words</h2>
+      <video src="ai-assist/c3-ai-assist.mp4" controls playsinline preload="metadata"></video>
+      <p>Explore steered by the answers - show only some types, highlight, paint - and every change undone,
+        by hand or by asking. <a href="ai-assist/">With a pause after each prompt and each answer</a>.
+        AI Assist is not in c³ yet.</p>
+    </section>
+
+    <section class="card">
+      <h2>Factory floor</h2>
+      <p>25 entities with Relationships, locations, areas and routes; its robots at work - speed, battery and
+        position changing live, missions coming and going.</p>
+      <pre><code>factory/launch.sh</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Boston bikes</h2>
+      <p>Real open data: 572 bike-share stations and 13 districts read from the city's CKAN portal, on the
+        map, each district its colour.</p>
+      <pre><code>bikes/launch.sh</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Madrid (CDMAD)</h2>
+      <p>A smart city: Madrid's bus lines, streetlights, air quality, weather and traffic - a page that moves
+        the world, c³ following with its alarms. In c³, type <code>CDMAD</code> as the broker.</p>
+      <p><a href="https://github.com/SEAMWARE/c3-demo-madrid">SEAMWARE/c3-demo-madrid</a></p>
+    </section>
+  </div>
+
+  <section class="how">
+    <h2>Running one</h2>
+    <p>Needs <a href="https://github.com/SEAMWARE/coraine/blob/main/doc/installation.md">coraine</a>, curl, and
+      <a href="https://github.com/SEAMWARE/c3#try-it">c³</a> built and running - checked out beside this
+      repository, whose launchers use its example scripts:</p>
+    <pre><code>git clone https://github.com/SEAMWARE/c3-demos     # beside c3/
+cd c3-demos
+factory/launch.sh                                    # or bikes/launch.sh</code></pre>
+    <p>It starts a coraine of its own in RAM, loads the demo and says where to connect: in c³,
+      <strong>Explore</strong>, enter <code>http://localhost:1090</code> (bikes: <code>1092</code>) and press
+      <strong>Connect</strong>. Ctrl-C stops it. More in the
+      <a href="https://github.com/SEAMWARE/c3-demos#running-a-demo">README</a>.</p>
+  </section>
+
+  <footer>Seamware · Apache License 2.0 · <a href="https://github.com/SEAMWARE/c3-demos">SEAMWARE/c3-demos</a></footer>
+</main>
+</body>
+</html>
