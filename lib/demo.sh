@@ -37,7 +37,7 @@ trap stopAll INT TERM EXIT
 brokerStart() {
   local port=$1 log=/tmp/c3-demo-$1.log
   if curl -s -o /dev/null "http://localhost:$port/version"; then die "port $port is in use - PORT=<another>"; fi
-  "$CORAINE" -fg -db corDB -p "$port" --healthPort $((port + 1)) --transports ws > "$log" 2>&1 &
+  "$CORAINE" -db corDB -p "$port" --healthPort $((port + 1)) --transports ws > "$log" 2>&1 &
   PIDS+=($!)
   for _ in $(seq 100); do
     curl -sf -o /dev/null "http://localhost:$((port + 1))/ready" && return 0
